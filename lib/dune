@@ -1,0 +1,4 @@
+(library
+ (name economia_light)
+ (flags :standard -safe-string)
+ (preprocess (pps ppx_deriving.std)))

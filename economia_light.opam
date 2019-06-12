@@ -1,0 +1,27 @@
+opam-version: "2.0"
+
+license:    "MIT"
+authors:    ["Johan Bolmsjö"]
+maintainer: "dev@johan.bitmaster.se"
+
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-j" jobs]
+]
+
+install: ["dune" "install"]
+
+depends: [
+  "ocaml"        { >= "4.07.0" }
+  "ppx_deriving" { >= "4.2.1"  }
+  "alcotest"     { >= "0.8.5"  }
+  "dune"         {build}
+]
+
+homepage:    "https://github.com/johan-bolmsjo/economia_light"
+bug-reports: "https://github.com/johan-bolmsjo/economia_light/issues"
+dev-repo:    "git+https://github.com/johan-bolmsjo/economia_light.git"
+
+synopsis: "Minimalist debt tracker"
+
+description: "Minimalist debt tracker able to resolve debts among a closed group of individuals."

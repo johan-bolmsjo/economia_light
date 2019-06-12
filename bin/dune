@@ -1,0 +1,8 @@
+(executable
+ (name main)
+ (flags :standard -safe-string)
+ (libraries economia_light))
+
+(install
+ (section bin)
+  (files (main.exe as economia_light)))

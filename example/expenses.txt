@@ -1,0 +1,51 @@
+# This is a comment
+
+# Types:
+#
+# Number:
+#   42.2
+#
+# String:
+#   'Hello world!'
+#
+# String list:
+#   ['Hello' 'World']
+#
+# Identifier (a-zA-Z):
+#   bob 
+
+# These are variables (assigned to identifiers)
+bob   = 'Bob'
+alice = 'Alice'
+frank = 'Frank'
+
+# [bob alice frank] expands to ['Bob' 'Alice' 'Frank'] when assigned to All.
+All = [bob alice frank]
+
+# Currency variables, naming is by convention only.
+EUR = 10
+SEK = 1
+
+# There is only one kind of transaction 'payment' accepting five parameters of
+# which two are optional.
+#
+# by:     String       (Who payed)
+# for:    String list  (Who shares)
+# amount: Number       (How much, multiplied by rate)
+# rate:   Number       (Optional exchange rate)
+# what:   String       (Optional comment)
+
+# ---> Example transactions --->
+
+# Bob is generous and treats everyone to dinner (including himself).
+payment by: bob for: All amount: 30 rate: EUR what: 'Burgers & Wine'
+
+# Primitive types can always be used instead of variables.
+payment by: bob for: [ 'Charlie' ] amount: 11 rate: EUR
+
+# Variables can be redefined
+EUR = 9.5
+
+payment by: 'Charlie' for: [ bob ] amount: 11 rate: EUR
+
+payment by: 'Charlie' for: [ bob ] amount: 5.5

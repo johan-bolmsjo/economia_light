@@ -1,0 +1,8 @@
+(executables
+  (names     lexer_test)
+  (libraries alcotest economia_light))
+
+(alias
+  (name runtest)
+  (deps lexer_test.exe)
+  (action (run %{deps})))
