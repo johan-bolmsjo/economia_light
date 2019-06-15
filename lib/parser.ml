@@ -88,23 +88,23 @@ module Payment_arg = struct
  
   let accept_number = function
     | Value.Number(num, loc) -> (num, loc)
-    | _ as x -> raise (invalid_argument_error (Value.location x))
+    | x -> raise (invalid_argument_error (Value.location x))
 
   let accept_string = function
     | Value.String(str, loc) -> (str, loc)
-    | _ as x -> raise (invalid_argument_error (Value.location x))
+    | x -> raise (invalid_argument_error (Value.location x))
 
   let accept_string_list = function
     | Value.List(lst, loc) ->
       begin
         let rec collect (acc : string list) = function
           | Value.String(str, _)::xs -> collect (str::acc) xs
-          | _ as v::_ -> raise (invalid_argument_error (Value.location v))
+          | x::_ -> raise (invalid_argument_error (Value.location x))
           | [] -> (List.rev acc, loc)
         in
         collect [] lst
       end
-    | _ as x -> raise (invalid_argument_error (Value.location x))
+    | x -> raise (invalid_argument_error (Value.location x))
 
   let parse (param : Lexer.token_datum) (value : Value.t) : t =
     match param.value with
@@ -141,7 +141,7 @@ let parse_payment (receiver : Lexer.token_datum) (tokens : Lexer.token list) sta
         else Value.of_tokens state.vars xs
       in
       collect ((name, (Payment_arg.parse name value))::acc) remain
-    | _ as x::_ -> raise (syntax_error (Lexer.datum_of_token x).location)
+    | x::_ -> raise (syntax_error (Lexer.datum_of_token x).location)
     | [] -> List.rev acc
   in
 
