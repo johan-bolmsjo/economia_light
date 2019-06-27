@@ -2,7 +2,11 @@ type t = {
   line   :int;
   column :int;
 }
-[@@deriving ord]
+
+let compare a b =
+  if a < b then -1
+  else if a > b then 1
+  else 0
 
 let string_of loc =
   Printf.sprintf "line: %d column: %d" loc.line loc.column
